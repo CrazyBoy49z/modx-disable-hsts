@@ -23,6 +23,7 @@ $sources= array (
     'build' => $root .'_build/',
     'data' => $root . '_build/data/',
     'source_core' => $root.'core/components/' . PKG_NAMESPACE,
+    'documents' => $root.'core/components/' . PKG_NAMESPACE . '/documents/',
 );
 unset($root); // save memory
 
@@ -75,6 +76,16 @@ $vehicle->resolve('file', array(
 ));
 $builder->putVehicle($vehicle);
 
+$modx->log(modX::LOG_LEVEL_INFO,'Adding package attributes and setup options...');
+$builder->setPackageAttributes(array(
+    'license' => file_get_contents($sources['documents'] . 'license.txt'),
+    'readme' => file_get_contents($sources['documents'] . 'readme.txt'),
+    // 'setup-options' => array(
+    //     'source' => $sources['build'].'setup.options.php',
+    // ),
+));
+
+$modx->log(modX::LOG_LEVEL_INFO,'Packing up transport package zip...');
 $builder->pack();
 
 $mtime = microtime();
