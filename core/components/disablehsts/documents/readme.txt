@@ -5,7 +5,7 @@ Version: 0.1-alpha1
 Created: July 9th, 2018
 Since: July 9th, 2018
 Author: shelbalart
-License: GNU GPLv2 (or later at your option)
+License: Apache License
 
 Adds HTTP response header in order to clear HSTS policy of the user's browser.
 
